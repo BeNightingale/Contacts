@@ -3,7 +3,6 @@ package contacts;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeParseException;
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
@@ -18,17 +17,17 @@ public class UserInterface {
         String birth = scanner.nextLine();
         LocalDate birthDate = null;
         if (birth != null && !birth.isEmpty()) {
-            try
-            {
+            try {
                 birthDate = LocalDate.parse(birth);
-            } catch (DateTimeParseException ignored) { }
+            } catch (DateTimeParseException ignored) {
+            }
         }
         if (birthDate == null) {
             System.out.println("Bad birth date!");
         }
         System.out.print("Enter the gender (M, F): ");
         String gender = scanner.nextLine();
-        if (gender == null || gender.isEmpty() || (!"M".equals(gender) && !"F".equals(gender))){
+        if (gender == null || gender.isEmpty() || (!"M".equals(gender) && !"F".equals(gender))) {
             System.out.println("Bad gender!");
             gender = "[no data]";
         }
@@ -38,7 +37,6 @@ public class UserInterface {
         LocalDateTime lastEdit = LocalDateTime.now();
 
         return new PersonRecord(Contacts.preparePhoneField(phoneNumber), creationDate, lastEdit, true, name, surname, gender, birthDate);
-
     }
 
     public static OrganizationRecord createOrganizationRecord(Scanner scanner) {
@@ -122,7 +120,7 @@ public class UserInterface {
             List<Record> book = contacts.getPhoneBook();
             for (int i = 0; i < contacts.getSize(); i++) {
                 if (book.get(i).isPerson()) {
-                    PersonRecord person = (PersonRecord)book.get(i);
+                    PersonRecord person = (PersonRecord) book.get(i);
                     System.out.printf("%d. %s %s%n", (i + 1), person.getName(), person.getSurname());
                 } else {
                     OrganizationRecord organization = (OrganizationRecord) book.get(i);

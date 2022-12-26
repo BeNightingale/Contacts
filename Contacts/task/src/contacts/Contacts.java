@@ -20,8 +20,6 @@ public class Contacts {
         return this.phoneBook;
     }
 
-
-
     public void add(Record record) {
         phoneBook.add(record);
     }
@@ -46,45 +44,45 @@ public class Contacts {
             pointer = -1;
         }
         switch (pointer) {
-            case 1:
+            case 1 -> {
                 System.out.print("Select a field (name, surname, birth, gender, number): ");
                 String field = scanner.nextLine();
                 switch (field) {
-                    case "name":
+                    case "name" -> {
                         System.out.print("Enter the name: ");
                         String name = scanner.nextLine();
                         ((PersonRecord) this.phoneBook.get(recordNumber - 1)).setName(name);
-                        break;
-                    case "surname":
+                    }
+                    case "surname" -> {
                         System.out.print("Enter the surname: ");
                         String surname = scanner.nextLine();
-                        ((PersonRecord)this.phoneBook.get(recordNumber - 1)).setSurname(surname);
-                        break;
-                    case "birth":
+                        ((PersonRecord) this.phoneBook.get(recordNumber - 1)).setSurname(surname);
+                    }
+                    case "birth" -> {
                         System.out.print("Enter the birth date: ");
                         LocalDate birthDate = null;
                         String birth = scanner.nextLine();
                         if (birth != null) {
-                            try
-                            {
+                            try {
                                 birthDate = LocalDate.parse(birth);
-                            } catch (DateTimeParseException ignored) { }
+                            } catch (DateTimeParseException ignored) {
+                            }
                         }
                         if (birthDate == null) {
                             System.out.println("Bad birth date!");
                         }
-                        ((PersonRecord)this.phoneBook.get(recordNumber - 1)).setBirthDate(birthDate);
-                        break;
-                    case "gender":
+                        ((PersonRecord) this.phoneBook.get(recordNumber - 1)).setBirthDate(birthDate);
+                    }
+                    case "gender" -> {
                         System.out.print("Enter the gender (M, F): ");
                         String gender = scanner.nextLine();
-                        if (!"M".equals(gender) && !"F".equals(gender)){
+                        if (!"M".equals(gender) && !"F".equals(gender)) {
                             System.out.println("Bad gender!");
                             gender = "[no data]";
                         }
-                        ((PersonRecord)this.phoneBook.get(recordNumber - 1)).setGender(gender);
-                        break;
-                    case "number":
+                        ((PersonRecord) this.phoneBook.get(recordNumber - 1)).setGender(gender);
+                    }
+                    case "number" -> {
                         System.out.print("Enter the number: ");
                         String number = scanner.nextLine();
                         if (checkNumber(number)) {
@@ -93,26 +91,23 @@ public class Contacts {
                             System.out.println("Wrong number format!");
                             this.phoneBook.get(recordNumber - 1).setPhoneNumber("[no number]");
                         }
-                        break;
-                    default:
-                        System.out.println("Wrong input!");
-                        break;
+                    }
+                    default -> System.out.println("Wrong input!");
                 }
-                break;
-
-            case -1:
+            }
+            case -1 -> {
                 System.out.println("Select a field (name, address, number):");
                 String organizationField = scanner.nextLine();
                 switch (organizationField) {
                     case "name":
                         System.out.println("Enter the organization name:");
                         String organizationName = scanner.nextLine();
-                        ((OrganizationRecord)this.phoneBook.get(recordNumber - 1)).setOrganizationName(organizationName);
+                        ((OrganizationRecord) this.phoneBook.get(recordNumber - 1)).setOrganizationName(organizationName);
                         break;
                     case "address":
                         System.out.println("Enter the address:");
                         String address = scanner.nextLine();
-                        ((OrganizationRecord)this.phoneBook.get(recordNumber - 1)).setAddress(address);
+                        ((OrganizationRecord) this.phoneBook.get(recordNumber - 1)).setAddress(address);
                         break;
                     case "number":
                         System.out.println("Enter the number:");
@@ -123,9 +118,9 @@ public class Contacts {
                         System.out.println("Wrong input!");
                         break;
                 }
-                break;
-            default:
-                break;
+            }
+            default -> {
+            }
         }
 
         System.out.println("The record updated!");

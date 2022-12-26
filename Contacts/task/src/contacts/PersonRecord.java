@@ -3,7 +3,7 @@ package contacts;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
-public class PersonRecord extends Record{
+public class PersonRecord extends Record {
     private String name;
     private String surname;
     private String gender;
@@ -20,11 +20,11 @@ public class PersonRecord extends Record{
             String gender,
             LocalDate birthDate
     ) {
-            super(phoneNumber, creationDate, lastEdit, isPerson);
-            this.name = name;
-            this.surname = surname;
-            this.gender = gender;
-            this.birthDate = birthDate;
+        super(phoneNumber, creationDate, lastEdit, isPerson);
+        this.name = name;
+        this.surname = surname;
+        this.gender = gender;
+        this.birthDate = birthDate;
     }
 
     public String getName() {
@@ -32,7 +32,7 @@ public class PersonRecord extends Record{
     }
 
     public String getSurname() {
-            return this.surname;
+        return this.surname;
     }
 
     public String getGender() {
@@ -52,7 +52,7 @@ public class PersonRecord extends Record{
     }
 
     public void setName(String name) {
-            this.name = name;
+        this.name = name;
     }
 
     public void setSurname(String surname) {
